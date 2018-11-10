@@ -30,10 +30,10 @@ public class CartiRepo implements CartiRepoInterface{
 	public void adaugaCarte(Carte c) {
 		BufferedWriter bw = null;
 		try {
-			bw = new BufferedWriter(new FileWriter(file,true));
+			bw = new BufferedWriter(new FileWriter(file, true));
 			bw.write(c.toString());
 			bw.newLine();
-			
+
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -79,25 +79,31 @@ public class CartiRepo implements CartiRepoInterface{
 	public List<Carte> cautaCarte(String autor) {
 		List<Carte> carti = getCarti();
 		List<Carte> cartiGasite = new ArrayList<Carte>();
-		int i=0;
-		while (i<carti.size()){
-			boolean flag = false;
-			List<String> lautor = carti.get(i).getAutori();
+		int i = 0;
+		while (i < carti.size()) {
+			boolean exista = false;
+			List<String> lautor = carti.get(i).getCuvinteCheie();
 			int j = 0;
-			while(j<lautor.size()){
-				if(lautor.get(j).toLowerCase().contains(autor.toLowerCase())){
-					flag = true;
-					break;
-				}
-				j++;
-			}
-			if(flag){
+			exista = hasAutor(lautor, autor);
+			if (exista == true) {
 				cartiGasite.add(carti.get(i));
 			}
 			i++;
 		}
 		return cartiGasite;
 	}
+
+	private boolean hasAutor(List<String> autorList, String a) {
+		boolean exista = false;
+		for (String autor : autorList) {
+			if (autor.toLowerCase().contains(a.toLowerCase())) {
+				exista = true;
+				break;
+			}
+		}
+		return exista;
+	}
+
 
 	@Override
 	public List<Carte> getCartiOrdonateDinAnul(String an) {

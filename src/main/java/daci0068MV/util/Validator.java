@@ -7,14 +7,14 @@ public class Validator {
     // functie booleana care verifica daca stringul trimis ca parametru contine numai litere din alfabetul englez
 	public static boolean isStringOK(String s) throws Exception{
 		boolean flag = s.matches("[a-zA-Z ]+");
-		if(flag == false)
+		if(!flag)
 			throw new Exception("String invalid");
 		return flag;
 	}
 
 	// valideaza structura interna a cartii c trimisa ca parametru
 	public static void validateCarte(Carte c)throws Exception{
-		if(c.getCuvinteCheie()!=null){ //if(c.getCuvinteCheie()==null){
+		if(c.getCuvinteCheie()==null){ //if(c.getCuvinteCheie()==null){
 			throw new Exception("Lista cuvinte cheie vida!");
 		}
 		if(c.getAutori()==null){
@@ -31,7 +31,13 @@ public class Validator {
 				throw new Exception("Cuvant cheie invalid!");
 		}
 		if(!isNumber(c.getAnAparitie()))
-			throw new Exception("Editura invalid!");
+			throw new Exception("An aparitie invalid!");
+		if(c.getTitlu().length() > 50 || c.getTitlu().length() < 1){
+			throw new Exception("Lungimea titlului este mai mare decat 50 caractere sau mai mica decat 1!");
+		}
+		if(c.getEditura().length() > 20 || c.getEditura().length() < 1) {
+			throw new Exception("Lungimea editurii mai mica decat 1 sau mai mare decat 20 caractere!");
+		}
 	}
 
 	// functie booleana care verifica daca stringul trimis ca parametru contine numai cifre

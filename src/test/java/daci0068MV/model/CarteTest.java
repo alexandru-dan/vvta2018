@@ -57,7 +57,7 @@ public class CarteTest {
     @Test (timeout = 100)
     public void getEditura() throws Exception {
         try{
-            Thread.sleep(9000);
+            Thread.sleep(90);
 
         }
 
@@ -76,7 +76,7 @@ public class CarteTest {
         catch (InterruptedException c3) {
          c3.printStackTrace();
         }
-        assertEquals("AnaAre", c.getTitlu());
+        assertEquals("AnaAreMere", c.getTitlu());
         System.out.println(c.getTitlu());
     }
 
@@ -92,5 +92,4 @@ public class CarteTest {
             c.setAnAparitie("1899");
 
     }
-
 }

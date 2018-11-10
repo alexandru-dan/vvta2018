@@ -40,8 +40,10 @@ public class Carte {
 	}
 
 	public void setAnAparitie(String anAparitie) throws Exception{
-		if(Integer.parseInt(anAparitie )<1900)
-			throw new Exception("An aparitie mai mic ca 1900");
+		if(Integer.parseInt(anAparitie )<1800)
+			throw new Exception("An aparitie mai mic ca 1800");
+		else if (Integer.parseInt(anAparitie) > 2017)
+			throw new Exception("An aparitie mai mare ca 2017");
 		else this.anAparitie = anAparitie;
 	}
 

@@ -28,30 +28,35 @@ public class CartiRepoMock implements CartiRepoInterface{
 	public void adaugaCarte(Carte c) {
 		carti.add(c);
 	}
-	
+
 	@Override
-	public List<Carte> cautaCarte(String autor) {
-		List<Carte> carti = getCarti();
-		List<Carte> cartiGasite = new ArrayList<Carte>();
-		int i=0;
-		while (i<carti.size()){
-			boolean flag = false;
-			List<String> lautor = carti.get(i).getCuvinteCheie();
-			int j = 0;
-			while(j<lautor.size()){
-				if(lautor.get(j).toLowerCase().contains(autor.toLowerCase())){
-					flag = true;
-					break;
-				}
-				j++;
-			}
-			if(flag == true){
-				cartiGasite.add(carti.get(i));
-			}
-			i++;
-		}
-		return cartiGasite;
-	}
+    public List<Carte> cautaCarte(String autor) {
+        List<Carte> carti = getCarti();
+        List<Carte> cartiGasite = new ArrayList<>();
+        int i = 0;
+        while (i < carti.size()) {
+            boolean exista = false;
+            List<String> lautor = carti.get(i).getAutori();
+            int j = 0;
+            exista = hasAutor(lautor, autor);
+            if (exista) {
+                cartiGasite.add(carti.get(i));
+            }
+            i++;
+        }
+        return cartiGasite;
+    }
+
+    private boolean hasAutor(List<String> autorList, String a) {
+        boolean exista = false;
+        for (String autor : autorList) {
+            if (autor.toLowerCase().contains(a.toLowerCase())) {
+                exista = true;
+                break;
+            }
+        }
+        return exista;
+    }
 
 	@Override
 	public List<Carte> getCarti() {
@@ -73,7 +78,7 @@ public class CartiRepoMock implements CartiRepoInterface{
 	@Override
 	public List<Carte> getCartiOrdonateDinAnul(String an) {
 		List<Carte> lc = getCarti();
-		List<Carte> lca = new ArrayList<Carte>();
+		List<Carte> lca = new ArrayList<>();
 		for(Carte c:lc){
 			if(c.getAnAparitie().equals(an)){
 				lca.add(c);
