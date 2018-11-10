@@ -72,7 +72,7 @@ public class CartiRepoMockTest {
         cartiRepoMock.adaugaCarte(c1);
         cartiRepoMock.adaugaCarte(c2);
 
-        assertEquals("Cautam autor existent", 1, (cartiRepoMock.cautaCarte("Gheorghe").size()));
+        assertEquals("Cautam autor existent", 1,cartiRepoMock.cautaCarte("Gheorghe").size());
         System.out.println("Autor -> gasit!");
     }
 }
