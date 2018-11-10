@@ -86,10 +86,4 @@ public class CarteTest {
         c.setTitlu("Maria Maria");
         assertEquals("Maria Maria",c.getTitlu());
     }
-
-    @Test(expected = Exception.class)
-    public void setAnAparitie() throws Exception{
-            c.setAnAparitie("1899");
-
-    }
 }

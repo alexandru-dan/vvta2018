@@ -9,12 +9,6 @@ public class ValidatorTest {
     Carte c;
     Validator v;
 
-    @Test(expected = Exception.class)
-    public void validateCarte() throws Exception{
-
-
-    }
-
 
 
 }

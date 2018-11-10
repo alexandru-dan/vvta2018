@@ -37,7 +37,6 @@ public class CartiRepoMock implements CartiRepoInterface{
         while (i < carti.size()) {
             boolean exista = false;
             List<String> lautor = carti.get(i).getAutori();
-            int j = 0;
             exista = hasAutor(lautor, autor);
             if (exista) {
                 cartiGasite.add(carti.get(i));
